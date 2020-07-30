@@ -12,7 +12,9 @@ print count($box)."\n";
 
 //проверка
 print(implode(",",$box) ."\n");
+
 print($box[2]."\n");
 print($box['1key']."\n");
 print($box[3]."\n");
-print($box[true]."\n");
+///true перезаписывает 1
+print($box[1]."\n");
