@@ -13,6 +13,7 @@ function is_simple($num){
     // если нет нетривиальных делителей, то простое
 
     print($num." ");
+    return true;
 }
 
 for($num=30; $num<=60; $num++){
