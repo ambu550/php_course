@@ -1,0 +1,25 @@
+<?php
+/*
+ * Вывести все простые числа в диапазоне от 30 до 60
+ * Простое - имеет два различных делителя: единицу и самого себя
+ */
+
+
+
+define("LIMIT",60);
+define("SQRT_LIMIT",floor(sqrt(LIMIT)));
+
+$S = str_repeat("\1", LIMIT+1);
+
+for($i=2;$i<=SQRT_LIMIT;$i++){
+    print_r($S);
+
+    if($S[$i]==="\1"){
+        for($j=$i*$i; $j<=LIMIT; $j+=$i){
+            $S[$j]="\0";
+        }
+
+    }
+}
+echo "\n";
+
