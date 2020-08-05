@@ -22,3 +22,6 @@ $var=50;
 $var = "{$var}";
 var_dump($var);
 
+$var=60;
+settype($var, "string");
+var_dump($var);
