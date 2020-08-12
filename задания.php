@@ -73,7 +73,7 @@ for ($k=0; $k<3; $k++) {
 //13) Что выведет var_dump($var1 == $var2)?
 
 $var1 = array("pen","pencil", "table");
-$var2 = array(1 => "pencil", 2 => "table", 0 => "pen")
+$var2 = array(1 => "pencil", 2 => "table", 0 => "pen");
 
 //14) Вывести фразу "You are beautiful" используя строковый оператор.
 //15) Чему будет равна $var2 ?
