@@ -1,7 +1,5 @@
 <?php
-/*
- *  Что выведет var_dump($var1 == $var2)?
- */
+//14) Вывести фразу "You are beautiful" используя строковый оператор.
 
 $s1 ="You are " ;
 $s2= "beautiful" ;

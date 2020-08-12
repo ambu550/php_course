@@ -1,7 +1,5 @@
 <?php
-/*
-    Вывести все элементы массива с помощью цикла for:
- */
+//9) Вывести все элементы массива с помощью цыкла for:
 
 $states_of_the_USA=array("Alabama", "Colorado", "Hawaii", "California");
 
