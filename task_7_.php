@@ -9,9 +9,16 @@
 меньше 6. Гарантируемое условие - количество цифр четное.
  */
 
-$k = 1;
 
+function luckyTicket($k)
+{
 //проверка на чётное число
-if ($k>6 || $k%2 != 0 || $k <0)
-{echo 'fail';}
-else {echo 'chetn';}
+    if ($k > 6 || $k % 2 != 0 || $k < 0 || gettype($k) != "integer") {
+        echo "некорректное значение! \n";
+    } else {
+        $k = (string)$k;
+        var_dump($k);
+    }
+}
+
+luckyTicket(2);

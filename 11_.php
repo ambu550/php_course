@@ -10,8 +10,9 @@ $var2 = array("bike", "bicycle", "car");
 //a
 $var_a= $var1 + $var2;
 var_dump($var_a);
-//б
 
+
+//б
 $var_b= $var2 + $var1;
 var_dump($var_b);
 
