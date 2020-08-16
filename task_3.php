@@ -23,13 +23,15 @@ else {
     $Sqw = ($katet1*$katet2)/2;
     $perimetr = $katet1+$katet2+$gipoten;
 
-   // $ugol_1 = round(180 / pi() * acos((pow($katet1, 2) + pow($katet2, 2) - pow($gipoten, 2)) / (2 * $katet2 * $katet1)), 2);
+    $sin1 = $katet1/$gipoten;
+    $ugol1 = round(((asin($sin1)/pi())*180));
 
+    $sin2 = $katet2/$gipoten;
+    $ugol2 = round((asin($sin2)/pi())*180);
 
-    echo "Гипотенуза: $gipoten \n";
-    echo "площадь:  $Sqw\n";
-    echo "углы:  $ugol_1\n";
-    echo "Периметр:  $perimetr\n";
+    echo "Гипотенуза:\t $gipoten \n";
+    echo "площадь:\t $Sqw\n";
+    echo "Периметр:\t $perimetr\n";
+    echo "углы:\t $ugol1 град \n\t $ugol2 град\n";
 }
 
-echo "$katet1 $katet2 \n";
