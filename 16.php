@@ -46,3 +46,11 @@ var_dump($var);
 $format ="%s";
 $var= sprintf ($format,$var);
 var_dump($var);
+
+
+$var=90;
+var_dump($var);
+$var = <<<EOT
+$var
+EOT;
+var_dump($var);

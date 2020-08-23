@@ -21,9 +21,9 @@ $spisok = array(
     'roz9' => array('id' => '9', 'age' => '11', 'gender' => 'g', 'login' => 'Julia'));
 
 
-function sort_nested($array, $uslovie)
+function sort_nested($spisok, $uslovie)
 {
-    usort($array, function ($a, $b) use ($uslovie) {
+    usort($spisok, function ($a, $b) use ($uslovie) {
         $res = 0;
 
         $a = (object)$a;
@@ -42,7 +42,7 @@ function sort_nested($array, $uslovie)
         return $res;
     });
 
-    return $array;
+    return $spisok;
 }
 
 

@@ -4,10 +4,12 @@
 */
 
 
-
 global $zakodir;
 global $alph;
-$alph = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
+$alph = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+        'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+
+
 $input = "Test case 123 a y z";
 $code = 1;
 
@@ -15,7 +17,9 @@ function zakodirovat($input, $code)
 {
     global $alph;
     global $zakodir;
+    $zakodir =[];
     //алфавит
+
 
 
 //проверка на валидность введённых данных
@@ -23,69 +27,56 @@ function zakodirovat($input, $code)
         echo "wrong input or code!!!";
 
     } else {
-        // перевон в нижний регистр
-        $input = strtolower($input);
-        $zakodir = "";
-        echo "Введено: " . $input . "\n";
 
-//перебор введённой строки
-        for ($i = 0; $i < strlen($input); $i++) {
+// перевон в верхний регистр
+        $input = strtoupper($input);
+        echo "Введено: " . $input . "\n";
+        $input = str_split($input);
+
+
+        for ($i = 0; $i < count($input); $i++) {
             //выбираем каждую букву
-            $letter = substr($input, $i, 1);
+            $letter = $input[$i];
             //позиция буквы в алфавите
-            $n = stripos($alph, $letter);
+            $n =array_search($letter,$alph);
             //проверка если не буква + шифровка
             if ($n === false) {
                 $encr = $letter;
+
             } else {
-                $encr = substr($alph, $n + $code, 1);
+                $encr = $alph[$n + $code];
             }
-            $zakodir = $zakodir . $encr;
+            $zakodir[$i] = $encr;
         }
-        echo "Зашифровано: " . $zakodir . "\n";
-        return $zakodir;
     }
+    $zakodir = implode($zakodir);
+    echo "Зашифровано: " . $zakodir . "\n";
 }
+
+
 
 function razkodirovat($zakodir, $code)
 {
     global $alph;
-
-    $razkodir = "";
-    for ($i = 0; $i < strlen($zakodir); $i++) {
+    $zakodir = str_split($zakodir);
+    for ($i = 0; $i < count($zakodir); $i++) {
         //выбираем каждую букву
-        $letter = substr($zakodir, $i, 1);
+        $letter = $zakodir[$i];
         //позиция буквы в алфавите
-        $n = strrpos($alph, $letter);
-        //проверка если не буква + разшифровка
+        $n =array_search($letter,$alph);
+        //проверка если не буква + шифровка
         if ($n === false) {
-            $decr = $letter;
+            $dencr = $letter;
         } else {
-            $decr = substr($alph, $n - $code, 1);
+            $n =$n +count($alph)/2;
+            $dencr = $alph[$n - $code];
         }
-        $razkodir = $razkodir . $decr;
+        $razkodir[$i] = $dencr;
     }
+    $razkodir = implode($razkodir);
     echo "Разшифровано: " . $razkodir . "\n";
 }
 
 zakodirovat($input, $code);
-
 razkodirovat($zakodir, $code);
-
-$start = microtime(true);
-function serchInArray($a, $b){
-    if (in_array($b, $a)) {
-        return TRUE;
-
-
-    }else{
-        return FALSE;
-    }
-
-}
-
-
-
-
-
 
