@@ -10,15 +10,70 @@
  */
 
 
+
 function luckyTicket($k)
+
 {
+    global $max;
+    $max = null;
+    $count=0;
 //проверка на чётное число
-    if ($k > 6 || $k % 2 != 0 || $k < 0 || gettype($k) != "integer") {
+    if ($k % 2 != 0 || $k < 2 || gettype($k) != "integer") {
         echo "некорректное значение! \n";
     } else {
-        $k = (string)$k;
-        var_dump($k);
+
+//определяем половину билета
+        $polov = $k / 2;
+
+
+//максимальное значение в билете
+
+
+        for ($m = 1; $m <= $k; $m++) {
+
+            $max = $max . "9";
+        }
+
+        //  echo $max . "\n";
+//перебираем диапазон
+        for ($bilet = 0; $bilet <= $max; $bilet++) {
+
+
+            //проверка длины билета (если меньше введённого то добавляем в начало нули)
+            if (strlen($bilet) < $k) {
+                $bilet=  str_pad($bilet, $k, "0", STR_PAD_LEFT);
+                //  print($b." ");
+            }
+
+//цикл расчёта сумм половинок
+            $sum1 = null;
+            $sum2 = null;
+            for($t=1; $t<=$polov;$t++)
+            {
+                //для первой половины
+                $t1=(substr($bilet,$t-1,1));
+                $sum1= $sum1+$t1;
+                //для второй половины
+                $t2=(substr($bilet,$k-$t,1));
+                $sum2=$sum2+$t2;
+
+            }
+
+//считаем выиграшные
+            if($sum1==$sum2){
+                $count++;
+                print ($bilet." выиграшный\t");
+                print ($sum1."=");
+                print ($sum2."");
+                print ("\tитого ".$count."\n");
+            }
+
+
+        }
+        print ("Количество выиграшных билетов:\t$count \n");
     }
+
+
 }
 
-luckyTicket(2);
+luckyTicket(4);
