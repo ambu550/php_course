@@ -5,10 +5,9 @@
 */
 
 $string = 'Winter is coming!';
-/*
-$string = (array) $string;
-print_r ($string);
-*/
 
-$string=explode(',',$string);
-print_r ($string);
+$array = str_split($string);
+$array[0] = 'Q';
+$string =implode($array);
+
+echo $string."\n";
