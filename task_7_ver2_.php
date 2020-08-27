@@ -9,6 +9,11 @@
 меньше 6. Гарантируемое условие - количество цифр четное.
  */
 
+$start = microtime(true);
+
+//8 цифр 101 секунда
+$k = 6;
+
 
 
 function luckyTicket($k)
@@ -16,7 +21,9 @@ function luckyTicket($k)
 {
     global $max;
     $max = null;
-    $count=0;
+    global $min;
+    $min = null;
+    $count=1; //нулевой всегда выиграшный
 //проверка на чётное число
     if ($k % 2 != 0 || $k < 2 || gettype($k) != "integer") {
         echo "некорректное значение! \n";
@@ -29,44 +36,49 @@ function luckyTicket($k)
 //максимальное значение в билете
 
 
-        for ($m = 1; $m <= $k; $m++) {
-
+        for ($M = 1; $M <= $k; $M++) {
             $max = $max . "9";
         }
 
-        //  echo $max . "\n";
+ //от какого следует начинать...до него явно не выиграшные
+        for ($m = 1; $m < $k/2; $m++) {
+            $min = $min . "9";
+        }
+
 //перебираем диапазон
-        for ($bilet = 0; $bilet <= $max; $bilet++) {
+        for ($bilet = $min; $bilet <= $max; $bilet++) {
+ $len=strlen($bilet);
 
 
-            //проверка длины билета (если меньше введённого то добавляем в начало нули)
-            if (strlen($bilet) < $k) {
-                $bilet=  str_pad($bilet, $k, "0", STR_PAD_LEFT);
-                //  print($b." ");
-            }
 
+    //проверка длины билета
+    if (strlen($len) < $k) {
+        //добавляем нули в начало билета
+        $bilet = str_pad($bilet, $k, "0", STR_PAD_LEFT);
+        //  print($b." ");
+
+    }
 //цикл расчёта сумм половинок
-            $sum1 = null;
-            $sum2 = null;
-            for($t=1; $t<=$polov;$t++)
-            {
-                //для первой половины
-                $t1=(substr($bilet,$t-1,1));
-                $sum1= $sum1+$t1;
-                //для второй половины
-                $t2=(substr($bilet,$k-$t,1));
-                $sum2=$sum2+$t2;
+    $sum1 = null;
+    $sum2 = null;
+    for ($t = 1; $t <= $polov; $t++) {
+        //для первой половины
+        $t1 = (substr($bilet, $t - 1, 1));
+        $sum1 = $sum1 + $t1;
+        //для второй половины
+        $t2 = (substr($bilet, $k - $t, 1));
+        $sum2 = $sum2 + $t2;
 
-            }
+    }
 
 //считаем выиграшные
-            if($sum1==$sum2){
-                $count++;
-                print ($bilet." выиграшный\t");
-                print ($sum1."=");
-                print ($sum2."");
-                print ("\tитого ".$count."\n");
-            }
+    if ($sum1 == $sum2) {
+        $count++;
+    /*    print ($bilet . " выиграшный\t");
+        print ($sum1 . "=");
+        print ($sum2 . "");
+        print ("\tитого " . $count . "\n");*/
+    }
 
 
         }
@@ -76,4 +88,5 @@ function luckyTicket($k)
 
 }
 
-luckyTicket(4);
+luckyTicket($k);
+print "Время выполнения скрипта c $k цифрами в билете: ".round(microtime(true) - $start, 4)." сек.\n";

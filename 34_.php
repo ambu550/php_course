@@ -25,8 +25,5 @@ array_push($array[NULL],$array2);
 
 echo ("<pre>");
 print_r($array);
-    echo ("</pre>");
+echo ("</pre>");
 ?>
-
-</body>
-</html>
