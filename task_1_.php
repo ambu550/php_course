@@ -40,5 +40,5 @@ function serchInArray2($a, $b){
 
 }
  serchInArray2($a, $b);
-echo 'Время выполнения скрипта №2 : '.round(microtime(true) - $start2).' сек.';
+echo 'Время выполнения скрипта №2 : '.round(microtime(true) - $start2, 4).' сек.';
 var_dump(($res));
