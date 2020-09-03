@@ -3,6 +3,9 @@
 
 $arr = [3, 5, 9, 12, 50];
 for ($i = 0; $i < count($arr); $i++) {
-    print ($arr[$i] * ($arr[$i] ** 2)) . "\n";
-    //print  ($arr[$i] ** 3) . "\n";
+
+    echo $arr[$i]."^".$arr[$i]."=".($arr[$i] * ($arr[$i] ** 2)) . "\n";
+
+    // print ($arr[$i] * ($arr[$i] ** 2)) . "\n";
+    // print  ($arr[$i] ** 3) . "\n";
 }

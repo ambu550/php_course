@@ -33,7 +33,7 @@ function serchInArray2($a, $b){
     if (in_array($b, $a)) {
         $res2= TRUE;
         return $res2;
-        return FALSE;
+
     }else{
         return FALSE;
     }
