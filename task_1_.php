@@ -5,11 +5,16 @@
  * есть ли в массиве искомый элемент и вернет TRUE или FALSE.
  */
 
-$a = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ,16 ,17 ,18, 19, 20];
+
+
+
+
+$a = [ 1, 2, 3, 4, 5, 5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ,16 ,17 ,18, 19, 20];
 
 $b = 5;
 
 $start = microtime(true);
+
 function serchInArray($a, $b){
     if (in_array($b, $a)) {
         return TRUE;
@@ -22,23 +27,30 @@ function serchInArray($a, $b){
 }
 $res = serchInArray($a, $b);
 
-echo 'Время выполнения скрипта №1 : '.round(microtime(true) - $start, 4).' сек.';
+$end = microtime(true);
+$runtime = ($end - $start)*1000;
+echo 'Время выполнения скрипта №1 : '.round($runtime, 4)." миллисекунд\n";
 var_dump(($res));
 
 
+
+
+////////////вариант 2
 
 $start2 = microtime(true);
 global $res2;
 function serchInArray2($a, $b){
-    if (in_array($b, $a)) {
-        $res2= TRUE;
-        return $res2;
-
-    }else{
-        return FALSE;
-    }
+    $a=array_flip($a);
+    return  array_key_exists($b,$a);
 
 }
- serchInArray2($a, $b);
-echo 'Время выполнения скрипта №2 : '.round(microtime(true) - $start2, 4).' сек.';
-var_dump(($res));
+
+$res2 = serchInArray2($a, $b);
+
+$end2 = microtime(true);
+$runtime2 = ($end2 - $start2)*1000;
+
+echo 'Время выполнения скрипта №2 : '. round($runtime2, 4)." миллисекунд\n";
+var_dump(($res2));
+
+////////////вариант 3
