@@ -11,7 +11,7 @@
 
 $a = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15 ,16 ,17 ,18, 19, 20, 21, 22];
 
-$b = 5;
+$b = 23;
 
 
 
@@ -76,10 +76,13 @@ function serchInArray3($a, $b, $start=0, $stop=null){
 
 
     //определяем середину массива
-    $middle=($start + $stop)/2;
+    $middle=intdiv( ($start + $stop),2);
 
     //определяем или элемент по середине равен искомому числу
     if ($a[$middle] !== $b){
+//        print " start: ".$start ;
+//        print " stop: ".$stop ;
+//        print " middle: ".$middle."\n" ;
         //если элемент по середине меньше искомого числа то далее проверяем вторую половину массива
         if($a[$middle] < $b){
             $start = $middle + 1;
